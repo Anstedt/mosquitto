@@ -1,5 +1,6 @@
-var mqtt    = require('mqtt');
-var count =0;
+var mqtt = require('/usr/local/lib/node_modules/mqtt/mqtt');
+// var mqtt = require('mqtt');
+var count = 0;
 var client  = mqtt.connect("mqtt://192.168.100.4");
 console.log("connected flag  " + client.connected);
 
