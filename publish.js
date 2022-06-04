@@ -4,12 +4,19 @@ var count = 0;
 var client  = mqtt.connect("mqtt://192.168.100.4");
 console.log("connected flag  " + client.connected);
 
-//handle incoming messages
-client.on('message',function(topic, message, packet){
-	console.log("message is "+ message);
-	console.log("topic is "+ topic);
-});
+function Incoming(topic, message, packet){
+    console.log("Incoming message is "+ message);
+    console.log("Topic is "+ topic);
+}
 
+//handle incoming messages
+client.on('message', (topic, message, packet) => Incoming(topic, message, packet));
+
+//handle incoming messages
+//client.on('message', (topic, message, packet) => {
+//    console.log("message is "+ message);
+//    console.log("topic is "+ topic);
+//});
 
 client.on("connect",function(){	
 console.log("connected  "+ client.connected);
