@@ -1,0 +1,40 @@
+June 03, 2022
+
+######################
+### Server install ###
+######################
+sudo apt-get install mosquitto mosquitto-clients
+
+# Config add, need to be root
+/etc/mosquitto/conf.d
+
+nopassword.conf
+listener 1883
+allow_anonymous true
+
+# Claims install of server defaults to auto run on startup
+$ sudo service mosquitto restart
+
+# Previously -t "test3" was used but that is no longer correct
+$ mosquitto_pub -h 192.168.100.4 -t clock -m “HelloWorld”
+
+######################
+### Client install ###
+######################
+sudo apt-get install mosquitto-clients
+
+# -d prints debug type messages
+$ mosquitto_sub -h "192.168.100.4" -d -t clock
+
+pip install paho-mqtt
+
+sudo apt-get install npm
+# For local install
+# cd /opt
+# sudo chmod 777 /opt
+# sudo npm install mqtt
+
+# In any directory
+sudo npm install mqtt -g
+
+node publish.js
